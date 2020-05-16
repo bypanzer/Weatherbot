@@ -3,18 +3,21 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from pyowm.exceptions import api_response_error
 
 
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
-
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text("Hi There! \nI'm the demo weather bot, just send me the name of a city and i'll "
-                              "provide you with the curent temperature there")
+    update.message.reply_text("Hi There! \nI'm the Weather bot,Send me the name of any city and ill provide you with "
+                              "real time weather data of that place. As long as the place you entered is in the "
+                              "database"
+                              "\n send /help for more info")
 
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Just message me the name of a city ')
+    update.message.reply_text('Possible inputs are:'
+                              '\n city_name : just send the name of the place as a message to me'
+                              '\n /info     : send this to know  more about me :)'
+                              '\n /help     : send this if you want me to send this message again'
+                              '\n more feature will be added soon  ')
 
 
 def info(update, context):
@@ -33,7 +36,18 @@ def weather(update, context):
         observation = owm.weather_at_place(str(update.message.text))
         weather = observation.get_weather()
         temperature = weather.get_temperature(unit='celsius')['temp']
-        update.message.reply_text("The temperature at " + str(update.message.text) + ' is ' + str(temperature) + degree_sign + 'C')
+        humidity = weather.get_humidity()
+        wind = weather.get_wind()['speed']
+        wind = wind * 3.6
+        pressure = weather.get_pressure()['press']
+        cloud = weather.get_detailed_status()
+        update.message.reply_text("Following are the weather parameters at " + str(update.message.text)  + ":"
+                                  "\nTemprature = "+ str(temperature) + degree_sign + 'C'
+                                  "\nHumidity      = " + str(humidity) + "%"
+                                  "\nWind speed = " + str(wind) + "km/h"
+                                  "\nPressure       = " + str(pressure) + "hPa"
+                                  "\nCloudiness   = " + str(cloud)
+                                  )
 
     except api_response_error.NotFoundError:
         update.message.reply_text('Stop living in the middle of Nowhere')
@@ -41,9 +55,7 @@ def weather(update, context):
 
 def main():
     """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
+
     updater = Updater("1281818858:AAGg9htTeICPzd7t2CUn7X5lPoLsGbmLBQw", use_context=True)
 
     # Get the dispatcher to register handlers
@@ -60,8 +72,6 @@ def main():
     # Start the Bot
     updater.start_polling()
 
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
 
