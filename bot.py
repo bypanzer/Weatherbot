@@ -8,7 +8,7 @@ from pyowm.exceptions import api_response_error
 
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text("Hi There! \nI'm the demo2 weather bot, just send me the name of a city and i'll "
+    update.message.reply_text("Hi There! \nI'm the demo weather bot, just send me the name of a city and i'll "
                               "provide you with the curent temperature there")
 
 
