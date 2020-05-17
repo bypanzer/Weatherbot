@@ -39,14 +39,17 @@ def weather(update, context):
         humidity = weather.get_humidity()
         wind = weather.get_wind()['speed']
         wind = wind * 3.6
+        wind = round(wind, 3)
         pressure = weather.get_pressure()['press']
         cloud = weather.get_detailed_status()
-        update.message.reply_text("Following are the weather parameters at " + str(update.message.text)  + ":"
-                                  "\nTemprature = "+ str(temperature) + degree_sign + 'C'
-                                  "\nHumidity      = " + str(humidity) + "%"
-                                  "\nWind speed = " + str(wind) + "km/h"
-                                  "\nPressure       = " + str(pressure) + "hPa"
-                                  "\nCloudiness   = " + str(cloud)
+        cloud_coverage = weather.get_clouds()
+        update.message.reply_text("Following are the weather parameters at " + str(update.message.text).upper()  + ":"
+                                  "\nTemprature         = "+ str(temperature) + degree_sign + 'C'
+                                  "\nHumidity              = " + str(humidity) + "%"
+                                  "\nWind speed         = " + str(wind) + "km/h"
+                                  "\nPressure               = " + str(pressure) + "hPa"
+                                  "\nWeather                = " + str(cloud)  +""
+                                  "\nCloud coverage  = " + str(cloud_coverage) + "%"
                                   )
 
     except api_response_error.NotFoundError:
