@@ -44,11 +44,11 @@ def weather(update, context):
         cloud = weather.get_detailed_status()
         cloud_coverage = weather.get_clouds()
         update.message.reply_text("Following are the weather parameters at " + str(update.message.text).upper()  + ":"
-                                  "\nTemprature         = "+ str(temperature) + degree_sign + 'C'
-                                  "\nHumidity              = " + str(humidity) + "%"
-                                  "\nWind speed         = " + str(wind) + "km/h"
-                                  "\nPressure               = " + str(pressure) + "hPa"
-                                  "\nWeather                = " + str(cloud)  +""
+                                  "\nTemprature          = "+ str(temperature) + degree_sign + 'C'
+                                  "\nHumidity               = " + str(humidity) + "%"
+                                  "\nWind speed          = " + str(wind) + "km/h"
+                                  "\nPressure                = " + str(pressure) + "hPa"
+                                  "\nWeather                 = " + str(cloud)  +""
                                   "\nCloud coverage  = " + str(cloud_coverage) + "%"
                                   )
 
