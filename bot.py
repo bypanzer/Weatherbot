@@ -157,7 +157,7 @@ def forecast(update, context):
 def main():
     """Start the bot."""
 
-    updater = Updater("1273635811:AAGCBdt8Ce_7UNuTaaTLFAEzNRDJHkzzuy8", use_context=True)
+    updater = Updater("1281818858:AAGg9htTeICPzd7t2CUn7X5lPoLsGbmLBQw", use_context=True)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
