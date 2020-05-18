@@ -55,7 +55,7 @@ def weather_cmd(update, _):
         cloud = weather.get_detailed_status()
         cloud_coverage = weather.get_clouds()
         update.message.reply_text(
-            f"Following are the weather 4parameters at <b>{update.message.text.title()}</b>:"
+            f"Following are the weather parameters at <b>{update.message.text.title()}</b>:"
             f"\n\n<b>Temprature</b>          <code>{temperature:.3}{degree_sign}C</code>"
             f"\n<b>Humidity</b>                <code>{humidity}%</code>"
             f"\n<b>Wind speed</b>           <code>{wind:.4}km/h</code>"
