@@ -55,7 +55,7 @@ def weather_cmd(update, _):
         cloud = weather.get_detailed_status()
         cloud_coverage = weather.get_clouds()
         update.message.reply_text(
-            f"Following are the weather parameters at <b>{update.message.text.title()}</b>:"
+            f"Following are the weather 4parameters at <b>{update.message.text.title()}</b>:"
             f"\n\n<b>Temprature</b>          <code>{temperature:.3}{degree_sign}C</code>"
             f"\n<b>Humidity</b>                <code>{humidity}%</code>"
             f"\n<b>Wind speed</b>           <code>{wind:.4}km/h</code>"
@@ -132,11 +132,11 @@ def forecast(update, context):
         while r < 5:
             update.message.reply_text("<b>Day</b> " + str(r + 1) +
                                       f"\n\n<b>Date</b>                                       <code>{date[r]}</code>"
-                                      f"\n<b>Temp(min/max)</b>                <code>{minimum_temp[r]}</code> / <code>{maximum_temp[r]:.3}{degree_sign}C</code>"
-                                      f"\n<b>Average temperature</b>    <code>{average_temp[r]:.3}{degree_sign}C</code>"
-                                      f"\n<b>But Feels like</b>                      <code>{feels_like[r]:.3}{degree_sign}C</code>"
+                                      f"\n<b>Temp(min/max)</b>                <code>{float(minimum_temp[r])}</code> / <code>{float(maximum_temp[r]):.3}{degree_sign}C</code>"
+                                      f"\n<b>Average temperature</b>    <code>{float(average_temp[r]):.3}{degree_sign}C</code>"
+                                      f"\n<b>But Feels like</b>                      <code>{float(feels_like[r]):.3}{degree_sign}C</code>"
                                       f"\n<b>Humiditiy</b>                            <code>{humidity[r]}%</code>"
-                                      f"\n<b>Wind Speed</b>                         <code>{wind_speed[r]}m/s</code>"
+                                      f"\n<b>Wind Speed</b>                         <code>{float(wind_speed[r])}m/s</code>"
                                       f"\n<b>Wind direction</b>                   <code>{wind_direction[r]}</code>"
                                       f"\n<b>Pressure</b>                                <code>{pressure[r]}mb</code>"
                                       f"\n<b>Visibility</b>                                <code>{visibility[r]}km</code>"
