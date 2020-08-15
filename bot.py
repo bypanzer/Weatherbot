@@ -6,6 +6,7 @@ from pyowm.exceptions import api_response_error
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import requests
 import simplejson
+import os
 
 
 def start(update, _):
