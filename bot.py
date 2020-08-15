@@ -42,7 +42,7 @@ def weather_cmd(update, _):
     """"Get the weather"""
     # Openweathermap API call
     degree_sign = u'\N{DEGREE SIGN}'
-    api_key = '33638dfd265a15bdc090bbb83039ac70'
+    api_key = os.environ.get("OWN_API_KEY","")
     owm = OWM(api_key)
     try:
         observation = owm.weather_at_place(str(update.message.text))
@@ -74,8 +74,9 @@ def forecast(update, context):
     # Weatherbit API call
     degree_sign = u'\N{DEGREE SIGN}'
     city = str(context.args[0])
-    url = 'https://api.weatherbit.io/v2.0/forecast/daily?city={}&key=445973c3b2c74d2196f0faf3d54faea7&days=5'.format(
-        city)
+    api_key = os.environ.get("WEATHERBIT_API_KEY","")
+    url = 'https://api.weatherbit.io/v2.0/forecast/daily?city={}&key={}&days=5'.format(
+        city, api_key)
     try:
         res = requests.get(url)
         full_data = res.json()['data']
@@ -156,8 +157,8 @@ def forecast(update, context):
 
 def main():
     """Start the bot."""
-
-    updater = Updater("1281818858:AAGg9htTeICPzd7t2CUn7X5lPoLsGbmLBQw", use_context=True)
+    bot_token = os.environ.get("BOT_TOKEN","")
+    updater = Updater( bot_token, use_context=True)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
