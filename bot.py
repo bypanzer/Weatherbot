@@ -156,6 +156,12 @@ def forecast(update, context):
         update.message.reply_text('Forecast not available for this location')
 
 
+
+def source(update, context):
+    update.message.reply_text('https://github.com/Nithin-Joseph/Weatherbot')
+
+
+
 def main():
     """Start the bot."""
     bot_token = os.environ.get("BOT_TOKEN","")
@@ -169,6 +175,7 @@ def main():
     dispatcher.add_handler(CommandHandler("help", help_cmd))
     dispatcher.add_handler(CommandHandler("info", info))
     dispatcher.add_handler(CommandHandler("forecast", forecast))
+    dispatcher.add_handler(CommandHandler("source", source))
 
     # on noncommand i.e message - weather of the given place
     dispatcher.add_handler(MessageHandler(Filters.text, weather_cmd))
