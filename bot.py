@@ -139,13 +139,13 @@ def forecast(update, context):
                                       f"\n<b>But Feels like</b>                      <code>{float(feels_like[r]):.3}{degree_sign}C</code>"
                                       f"\n<b>Humiditiy</b>                             <code>{humidity[r]}%</code>"
                                       f"\n<b>Wind Speed</b>                         <code>{float(wind_speed[r])}m/s</code>"
-                                      f"\n<b>Wind direction</b>                     <code>{wind_direction[r]}</code>"
+                                      f"\n<b>Wind direction</b>                   <code>{wind_direction[r]}</code>"
                                       f"\n<b>Pressure</b>                               <code>{pressure[r]}mb</code>"
                                       f"\n<b>Visibility</b>                                <code>{visibility[r]}km</code>"
                                       f"\n<b>Uv Max Index</b>                       <code>{max_uv_index[r]}</code>"
                                       f"\n<b>Cloud coverage</b>                   <code>{cloud_coverage[r]}%</code>"
-                                      f"\n<b>Weather</b>                                 <code>{weather_description[r]}</code>"
-                                      f"\n<b>Chance of rain</b>                      <code>{chance_of_rain[r]}%</code>",
+                                      f"\n<b>Chance of rain</b>                      <code>{chance_of_rain[r]}%</code>"
+                                      f"\n<b>Weather</b>                                 <code>{weather_description[r]}</code>",
                                       parse_mode="HTML"
                                       )
 
